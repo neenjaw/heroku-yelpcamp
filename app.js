@@ -1,7 +1,6 @@
 // ============================
 // Node Requires
 // ============================
-
 const express  = require('express');
 const mongoose = require('mongoose');
 
@@ -125,5 +124,5 @@ app.use('/campgrounds/:id/comments', commentRoutes);
 reload(app);
 
 app.listen(app.get('port'), 'localhost', () => {
-    console.log('Yelp-Camp Server starting on localhost:3000');
+    console.log('Yelp-Camp Server starting on localhost:'+app.get('port'));
 });

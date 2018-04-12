@@ -4,6 +4,7 @@
   "description": "Campground Review",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "node app.js"
   },
   "keywords": [

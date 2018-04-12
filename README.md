@@ -1,2 +1,2 @@
 # heroku-yelpcamp
-Yelpcamp changed for deployment to Heroku
+Yelpcamp modified for deployment to Heroku
