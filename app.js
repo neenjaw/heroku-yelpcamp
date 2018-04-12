@@ -27,7 +27,13 @@ const commentRoutes    = require('./routes/comment');
 // Mongoose Connect
 // ============================
 
-mongoose.connect('mongodb://localhost/yelpcamp');
+let mongoURI = 'mongodb://localhost/yelpcamp';
+
+if (process.env.MONGO_DB_USER && process.env.MONGO_DB_PASSWORD && process.env.MONGO_DB_URL) {
+    mongoURI = `mongodb://${process.env.MONGO_DB_USER}:${process.env.MONGO_DB_PASSWORD}@${process.env.MONGO_DB_URL}`;
+} 
+
+mongoose.connect(mongoURI);
 
 // ============================
 // Mongoose Schema Requires
@@ -47,6 +53,7 @@ const seed       = require('./seed');
 
 const app = express();
 
+app.set('ip', process.env.IP || 'localhost');
 app.set('port', process.env.PORT || 3000);
 
 // View Engine
@@ -123,6 +130,6 @@ app.use('/campgrounds/:id/comments', commentRoutes);
 // ============================
 reload(app);
 
-app.listen(app.get('port'), 'localhost', () => {
-    console.log('Yelp-Camp Server starting on localhost:'+app.get('port'));
+app.listen(app.get('port'), app.get('ip'), () => {
+    console.log('Yelp-Camp Server starting on '+app.get('ip')+':'+app.get('port'));
 });
