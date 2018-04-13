@@ -4,9 +4,7 @@
   "description": "Campground Review",
   "main": "app.js",
   "scripts": {
-    "start": "MONGO_DB_USER=yelpcamp MONGO_DB_PASSWORD=7T4urXY25DBsUlguIZ83 MONGO_DB_URL=ds241699.mlab.com:41699/neenjaw_yelpcamp node app.js",
-    "winstart": "cross-env MONGO_DB_USER=yelpcamp MONGO_DB_PASSWORD=7T4urXY25DBsUlguIZ83 MONGO_DB_URL=ds241699.mlab.com:41699/neenjaw_yelpcamp node app.js",
-    "dev": "node app.js",
+    "start": "node app.js",
     "test": "node app.js"
   },
   "keywords": [
