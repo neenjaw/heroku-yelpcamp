@@ -26,14 +26,18 @@ const commentRoutes    = require('./routes/comment');
 // ============================
 // Mongoose Connect
 // ============================
+const dbProtocol = 'mongodb';
+const dbUser = process.env.MONGO_DB_USER || '';
+const dbPassword = process.env.MONGO_DB_PASSWORD || '';
+const dbUrl = process.env.MONGO_DB_URL || 'localhost/yelpcamp';
 
-let mongoURI = 'mongodb://localhost/yelpcamp';
+const dbCredentialsProvided = (dbuser && dbpassword) ? true : false;
 
-if (process.env.MONGO_DB_USER && process.env.MONGO_DB_PASSWORD && process.env.MONGO_DB_URL) {
-    mongoURI = `mongodb://${process.env.MONGO_DB_USER}:${process.env.MONGO_DB_PASSWORD}@${process.env.MONGO_DB_URL}`;
-} 
-
-mongoose.connect(mongoURI);
+if (dbCredentialsProvided) {
+    mongoose.connect(`${dbProtocol}://${dbUser}:${dbPassword}@${dbUrl}`);
+} else {
+    mongoose.connect(`${dbProtocol}://${dbUrl}`);
+}
 
 // ============================
 // Mongoose Schema Requires
