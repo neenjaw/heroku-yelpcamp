@@ -31,7 +31,7 @@ const dbUser = process.env.MONGO_DB_USER || '';
 const dbPassword = process.env.MONGO_DB_PASSWORD || '';
 const dbUrl = process.env.MONGO_DB_URL || 'localhost/yelpcamp';
 
-const dbCredentialsProvided = (dbuser && dbpassword) ? true : false;
+const dbCredentialsProvided = (dbUser && dbPassword) ? true : false;
 
 if (dbCredentialsProvided) {
     mongoose.connect(`${dbProtocol}://${dbUser}:${dbPassword}@${dbUrl}`);
